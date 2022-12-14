@@ -122,17 +122,21 @@ class ElevationMap:
                 if self.visited[y][x]:
                     tmp[y][x] = '#'
         print('\n'.join(''.join(row) for row in tmp))
-        max_score = max(max(score if score < big_int else 0 for score in row) for row in self.scores)
+        max_score = max(
+            max(score if score < big_int else 0 for score in row)
+            for row in self.scores
+        )
         print(f'Max score: {max_score}')
         time.sleep(0.005)
 
 
-# with open(filename, 'r') as f:
-#     elevation_map = ElevationMap(
-#         [[height for height in row if height != '\n'] for row in f]
-#     )
+with open(filename, 'r') as f:
+    elevation_map = ElevationMap(
+        [[height for height in row if height != '\n'] for row in f]
+    )
 
-# print(f'Part 1: Number of steps required: {elevation_map.find_path()}')
+print(f'Part 1: Number of steps required: {elevation_map.find_path()}')
+
 
 def opposite(s):
     if s == 'S':
